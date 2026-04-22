@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Weight Loss Plan Generator</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top, #111827, #0b1220);
+      color: #e5e7eb;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .topbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid #1f2937;
+      background: #0f172a;
+    }
+
+    .logo {
+      font-weight: 600;
+      text-decoration: none;
+      color: #e5e7eb;
+    }
+
+    .nav-btn {
+      padding: 8px 14px;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #e5e7eb;
+      font-size: 14px;
+    }
+
+    .nav-btn:hover {
+      background: #1f2937;
+    }
+
+    .card {
+      margin-top: 40px;
+      width: 440px;
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid #1f2937;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .small {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 15px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    select, input {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #374151;
+      background: #111827;
+      color: white;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      background: #1f2937;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #374151;
+    }
+
+    #planOutput {
+      margin-top: 20px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="topbar">
+  <a href="/" class="logo">Free 1-page tools</a>
+  <a href="/" class="nav-btn">View all tools</a>
+</div>
+
+<div class="card">
+
+  <h1>Weight Loss Plan Generator</h1>
+  <p class="small">Answer a few questions to get a simple, personalised starting plan.</p>
+
+  <form id="weightForm">
+
+```
+<label>How does your body respond to food?</label>
+<select id="body">
+  <option>Gain weight easily</option>
+  <option>Gain weight if not careful</option>
+  <option>Weight stays stable</option>
+  <option>Struggle to gain weight</option>
+</select>
+
+<label>Height (cm)</label>
+<input type="number" id="height">
+
+<label>Weight (kg)</label>
+<input type="number" id="weight">
+
+<label>Diet quality</label>
+<select id="diet">
+  <option>Highly processed (frequent takeaway)</option>
+  <option>Mixed diet</option>
+  <option>Mostly whole foods</option>
+</select>
+
+<label>Eating pattern</label>
+<select id="meals">
+  <option>1–2 meals/day</option>
+  <option>3 meals/day</option>
+  <option>4+ meals/snacking</option>
+</select>
+
+<label>Daily walking</label>
+<select id="walking">
+  <option>Less than 30 mins</option>
+  <option>30–60 mins</option>
+  <option>60–90 mins</option>
+  <option>90+ mins</option>
+</select>
+
+<label>Cardio</label>
+<select id="cardio">
+  <option>None</option>
+  <option>1–2x/week</option>
+  <option>3–5x/week</option>
+</select>
+
+<label>Strength training</label>
+<select id="strength">
+  <option>None</option>
+  <option>1–2x/week</option>
+  <option>3+ times/week</option>
+</select>
+
+<label>Sugary drinks</label>
+<select id="sugar">
+  <option>Daily</option>
+  <option>Few times/week</option>
+  <option>Rarely/never</option>
+</select>
+
+<label>Caffeine</label>
+<select id="caffeine">
+  <option>3+ per day</option>
+  <option>1–2 per day</option>
+  <option>Occasional/none</option>
+</select>
+
+<label>Alcohol</label>
+<select id="alcohol">
+  <option>Frequent</option>
+  <option>Weekly</option>
+  <option>Rare/none</option>
+</select>
+
+<label>Sleep</label>
+<select id="sleep">
+  <option>&lt;6 hours</option>
+  <option>6–7 hours</option>
+  <option>7–9 hours</option>
+  <option>9+ hours</option>
+</select>
+
+<button type="button" onclick="generatePlan()">Generate Plan</button>
+```
+
+  </form>
+
+  <div id="planOutput"></div>
+
+</div>
+
+<script>
+function generatePlan() {
+  const diet = document.getElementById("diet").value;
+  const walking = document.getElementById("walking").value;
+  const sugar = document.getElementById("sugar").value;
+  const alcohol = document.getElementById("alcohol").value;
+  const sleep = document.getElementById("sleep").value;
+
+  let focus = [];
+  let actions = [];
+
+  if (diet.includes("Highly")) {
+    focus.push("Reduce processed food intake (including most takeaway meals)");
+    actions.push("Replace 1 takeaway meal with a whole food meal this week");
+  }
+
+  if (walking.includes("Less")) {
+    focus.push("Increase daily movement");
+    actions.push("Add 20–30 minutes walking daily");
+  }
+
+  if (sugar === "Daily" || alcohol === "Frequent") {
+    focus.push("Reduce liquid calorie intake");
+    actions.push("Replace sugary drinks or alcohol with water 3+ days this week");
+  }
+
+  if (sleep === "<6 hours") {
+    focus.push("Improve sleep quality");
+    actions.push("Aim for at least 7 hours sleep on most nights");
+  }
+
+  if (focus.length === 0) {
+    focus.push("Maintain current habits with small improvements");
+    actions.push("Stay consistent and monitor progress weekly");
+  }
+
+  document.getElementById("planOutput").innerHTML = `
+    <div class="card">
+      <h2>Your Plan</h2>
+
+      <p><strong>Main focus areas:</strong></p>
+      <ul>${focus.map(f => `<li>${f}</li>`).join("")}</ul>
+
+      <p><strong>3 simple actions this week:</strong></p>
+      <ul>${actions.slice(0,3).map(a => `<li>${a}</li>`).join("")}</ul>
+
+      <p class="small">
+        This tool provides general lifestyle guidance and is not medical advice.
+      </p>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>

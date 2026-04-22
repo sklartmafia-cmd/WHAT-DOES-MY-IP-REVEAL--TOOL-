@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Relaxation Check Tool</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #0b1220;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      width: 520px;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      color: #93c5fd;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #374151;
+      background: #0f172a;
+      color: white;
+    }
+
+    button {
+      margin-top: 18px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #output {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .block {
+      background: #0f172a;
+      border: 1px solid #1f2937;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 12px;
+    }
+
+    .small {
+      font-size: 12px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h1>How Relaxed Is Your Environment?</h1>
+
+  <label>Environment</label>
+  <select id="environment">
+    <option>Calm / quiet / clean</option>
+    <option>Moderate noise / some clutter</option>
+    <option>Noisy / messy / chaotic</option>
+  </select>
+
+  <label>Lighting</label>
+  <select id="lighting">
+    <option>Soft / warm / dim</option>
+    <option>Natural daylight</option>
+    <option>Bright artificial lighting</option>
+  </select>
+
+  <label>Sound</label>
+  <select id="sound">
+    <option>Silence</option>
+    <option>Nature sounds / ambient music</option>
+    <option>TV / YouTube background</option>
+    <option>Social media / active content</option>
+  </select>
+
+  <label>Screen Use</label>
+  <select id="screens">
+    <option>No screens</option>
+    <option>Passive (TV / ambient video)</option>
+    <option>Active (scrolling / messaging)</option>
+  </select>
+
+  <label>Body State</label>
+  <select id="body">
+    <option>Lying down</option>
+    <option>Sitting relaxed</option>
+    <option>Active / moving</option>
+  </select>
+
+  <button onclick="generateRelaxPlan()">Analyse Relaxation State</button>
+
+  <div id="output"></div>
+
+  <p class="small">
+    This tool provides general wellbeing guidance only.
+  </p>
+
+</div>
+
+<script src="relax.js"></script>
+
+</body>
+</html>
