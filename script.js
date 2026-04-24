@@ -219,10 +219,6 @@ document.getElementById("output").innerHTML = `
   ` : ""}
 
   <hr>
-
-  <p class="small">
-    This tool shows approximate IP-based information only.
-  </p>
 `;
   })
   .catch(err => {
